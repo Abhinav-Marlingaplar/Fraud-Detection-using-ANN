@@ -41,16 +41,18 @@ To avoid local downloads, the dataset was accessed directly from **Google Drive*
 
 ## Model Summary
 
-| Layer Type | Description | Activation | Notes |
-|-------------|--------------|-------------|--------|
-| Input Layer | Standardized numerical features | — | Input dimension = number of features |
-| Dense Layer | 64 neurons | ReLU | Learns complex feature relationships |
-| Batch Normalization | — | — | Stabilizes and accelerates training |
-| Dropout Layer | 30% | — | Prevents overfitting |
-| Dense Layer | 32 neurons | ReLU | Learns deep patterns |
-| Dropout Layer | 20% | — | Adds regularization |
-| Dense Layer | 16 neurons | ReLU | Consolidates learned patterns |
-| Output Layer | 1 neuron | Sigmoid | Binary classification output |
+| **Layer Type**              | **Output Shape** | **Parameters** | **Activation Function** | **Purpose / Description** |
+|-----------------------------|------------------|----------------|--------------------------|----------------------------|
+| **Dense Layer 1**           | (None, 64)       | 1,984          | ReLU                     | Extracts key relationships from the input features. |
+| **Batch Normalization 1**   | (None, 64)       | 256            | —                        | Stabilizes activations and speeds up training. |
+| **Dropout Layer 1**         | (None, 64)       | 0              | —                        | Randomly deactivates neurons (30%) to prevent overfitting. |
+| **Dense Layer 2**           | (None, 16)       | 1,040          | ReLU                     | Learns non-linear patterns from processed data. |
+| **Batch Normalization 2**   | (None, 16)       | 64             | —                        | Normalizes activations to improve convergence. |
+| **Dropout Layer 2**         | (None, 16)       | 0              | —                        | Reduces overfitting by randomly deactivating neurons (20%). |
+| **Dense Layer 3**           | (None, 12)       | 204            | ReLU                     | Final dense layer for refined feature extraction. |
+| **Batch Normalization 3**   | (None, 12)       | 48             | —                        | Ensures stable activation distributions before output. |
+| **Output Layer**            | (None, 1)        | 13             | Sigmoid                  | Outputs probability of a transaction being fraudulent (1) or legitimate (0). |
+
 
 ---
 
